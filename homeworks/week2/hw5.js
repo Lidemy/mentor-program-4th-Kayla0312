@@ -1,7 +1,7 @@
 function join(arr, concatStr) {
-    var result = ''
-    for(var i = 0; i < arr.length; i++){
-        result += arr[i] + concatStr
+    var result = arr[0]
+    for(var i = 1; i < arr.length; i++){
+        result += concatStr + arr[i] 
     }
     return result
 }
