@@ -29,7 +29,7 @@ function digitsCount(n) {
 //取餘數直到 n 不等於 0
 //對 10 取於數,由數字後開始取
 // 取出數字 ** 平方 => 加總
-// 除 10 後捨去餘數,進行下一次計算
+// 除 10 後,捨去餘數,進行下一次計算
 function isNarcissisticNum(n) {
   let m = n;
   const digits = digitsCount(m);
