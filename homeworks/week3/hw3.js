@@ -14,7 +14,7 @@ rl.on('line', (line) => {
 });
 
 function solve(lines) {
-  for (let i = 1; i < Number(lines.length); i += 1) {
+  for (let i = 1; i < lines.length; i += 1) {
     if (isPrime(Number(lines[i]))) {
       console.log('Prime');
     } else {
