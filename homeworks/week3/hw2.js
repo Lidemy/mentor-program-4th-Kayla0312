@@ -13,7 +13,7 @@ rl.on('line', (line) => {
   lines.push(line);
 });
 
-//1.判斷幾位數
+//判斷幾位數
 //除 10 直到 n=0
 //排除0
 function digitsCount(n) {
@@ -25,9 +25,9 @@ function digitsCount(n) {
   }
   return result;
 }
-//2.判斷是否是水仙花數
-//取餘數直到 n 不等於 0
-//對 10 取於數,由數字後開始取
+// 判斷是否是水仙花數
+// 取餘數直到 n 不等於 0
+// 對 10 取於數,從數字後開始取
 // 取出數字 ** 平方 => 加總
 // 除 10 後,捨去餘數,進行下一次計算
 function isNarcissisticNum(n) {
@@ -39,7 +39,7 @@ function isNarcissisticNum(n) {
     sum += num ** digits;
     m = Math.floor(m / 10);
   }
-  //判斷結果
+  // 判斷結果
   if (n === sum) {
     return true;
   } return false;
