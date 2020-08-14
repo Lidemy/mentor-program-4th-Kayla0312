@@ -5,6 +5,8 @@ const request = require('request');
 const process = require('process');
 
 const arg = process.argv;
+const action = arg[2];
+const params = arg[3];
 
 //印出前 20本書的 id＋name
 function listBook() {
@@ -67,25 +69,28 @@ function updateName(id, name) {
   request.patch({
     url: `https://lidemy-book-store.herokuapp.com/books/${id}`,
     form: { name },
-  }, (error, response, body) => {
-    console.log(body);
+  }, (error) => {
+    if (error) {
+      console.log('error:', error);
+    }
+    console.log(`更新成功! id:${id} 書名：${name}`);
   });
 }
-switch (process.arg[2]) {
+switch (action) {
   case 'list':
     listBook(); //執行listBook function
     break;
   case 'read':
-    readBook(arg[3]); // 第四個＝> id
+    readBook(params); // 第四個＝> id
     break;
   case 'create':
-    creatBook(arg[3]); // 第四個 ＝> "I love coding"
+    creatBook(params); // 第四個 ＝> "I love coding"
     break;
   case 'delete':
-    deleteId(arg[3]); //第四個 ＝>要刪除的 id
+    deleteId(params); //第四個 ＝>要刪除的 id
     break;
   case 'update':
-    updateName(arg[2], arg[3]); //第三＋四個 ＝> 要更新的id + updateName
+    updateName(params, arg[4]); //第三＋四個 ＝> 要更新的id + updateName
     break;
   default:
     console.log('Available commands: list, read, create, delete and update');

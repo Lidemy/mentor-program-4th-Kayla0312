@@ -10,18 +10,18 @@ const topGame = {
     Accept: 'application/vnd.twitchtv.v5+json',
   },
 };
-function callback(response, body) {
+function callback(error, response, body) {
   let info;
   try {
     info = JSON.parse(body);
-  } catch (error) {
+  } catch (err) {
     console.log(error);
     return;
   }
+  //console.log(gameInfo); 取到預設的10筆 body 裡的 top 內容 => game(name...)＋viewers＋channels
   const gameInfo = info.top;
-  //gameInfo 取到預設的10筆 body 裡的 top 內容 => game(name...)＋viewers＋channels*/
   for (let i = 0; i < gameInfo.length; i += 1) {
-    // viwers（gameInfo[i].viewers）/name(gameInfo[i].game.name)
+    //viwers（gameInfo[i].viewers）/name(gameInfo[i].game.name)
     console.log(`${gameInfo[i].viewers} ${gameInfo[i].game.name}`);
   }
 }
