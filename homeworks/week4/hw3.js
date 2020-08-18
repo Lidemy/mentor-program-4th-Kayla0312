@@ -10,6 +10,7 @@ const name = arg[2];
 request(`https://restcountries.eu/rest/v2/name/${name}`, (error, response, body) => {
   if (error) {
     console.log('抓取失敗', error);
+    return;
   }
   let info;
   try {

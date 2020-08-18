@@ -16,7 +16,6 @@ function callback(error, response, body) {
     info = JSON.parse(body);
   } catch (err) {
     console.log(error);
-    return;
   }
   //console.log(gameInfo); 取到預設的10筆 body 裡的 top 內容 => game(name...)＋viewers＋channels
   const gameInfo = info.top;
