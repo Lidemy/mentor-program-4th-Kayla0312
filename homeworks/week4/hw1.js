@@ -5,6 +5,7 @@ const request = require('request');
 request('https://lidemy-book-store.herokuapp.com/books?_limit=10', (error, response, body) => {
   if (error) {
     console.log('抓取失敗');
+    return;
   }
   let info;
   try {
