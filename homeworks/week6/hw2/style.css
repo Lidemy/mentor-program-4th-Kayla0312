@@ -1,0 +1,147 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: "";
+	content: none;
+}
+body {
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+.wrap{
+    max-width: 645px;
+    margin: 0 auto;
+    padding-top: 50px;
+}
+.form__content {
+    padding: 55px 40px;
+    margin-bottom:66px ;
+    box-shadow: 1.8px 2.4px 5px 0 rgba(0, 0, 0, 0.3);
+    background-color: #ffffff;
+    border-top: solid 8px #fad312;    
+}
+h1{
+    font-family: "MicrosoftJhengHei";
+    font-size: 36px;
+    font-weight: bold;
+    text-align: left;
+    color: #000000;
+    margin-bottom: 35px;
+}
+ul li{
+    font-family: "MicrosoftJhengHei";
+    font-size: 14px;
+    text-align: left;
+    color: #000000;
+    margin-bottom: 10px;
+}
+ul li:last-child{
+    color:red;
+    margin-bottom: 55px;
+}
+span{
+    color: red;
+}
+
+.form {
+    margin: 10px 0;
+}
+
+label {
+    display: block;
+    font-family: "MicrosoftJhengHei";
+    font-size: 20px;
+    text-align: left;
+    color: #000000;
+    margin: 55px 0 20px 0 ;
+}
+input {
+    cursor:pointer;
+    border-radius: 5px;
+    border: solid 1px #d0d0d0;
+    padding: 5px 5px;
+}
+.radio {
+    display: block;
+    padding-bottom: 20px;
+}
+button {
+    display: block;
+    background-color: #fad312;
+    border: none;
+    border-radius: 3px;
+    padding: 12px 32px;
+    margin: 55px 20px 55px 0;
+    cursor:pointer;
+}
+textarea {
+    border-radius: 5px;
+    border: solid 1px #d0d0d0;
+}
+p {
+    font-family: "MicrosoftJhengHei";
+    font-size: 14px;
+    color: #000000;
+    margin-bottom: 24px ;
+  }
+
+/*footer*/
+.footer__copyright {
+    background-color: #000000;
+    height: 60px;
+}
+.footer__copyright p {
+    font-family: "MicrosoftJhengHei";
+    font-size: 13px;
+    color: #999999;
+    text-align: center;
+    padding: 24px 0 0;
+}
+@media (max-width:375px) {
+    h1 {
+        font-size: 30px;
+    }
+    .wrap{
+        padding-top: 0px ;
+    }
+    .form__content {
+        margin-bottom:0px;
+    }
+}
