@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>新拖延運動報名表單</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="form.js"></script>
+</head>
+<body>
+  <main>
+    <div class="wrap">
+      <div class="form__content">
+        <h1>新拖延運動報名表單</h1>
+        <ul>
+          <li>活動日期：2020/12/10 ~ 2020/12/11</li>
+          <li>活動地點：台北市大安區新生南路二段1號</li>
+          <li>*必填</li>
+        </ul>
+        <form> 
+          <div class="input-block required hide-error">
+            <div class="input-block__title">
+              <label for="name">暱稱 <span>*</span></label>
+            </div>
+            <div class="input-block__content">
+              <input id="name" type="text" placeholder="您的回答" name="name">
+            </div>
+            <div class="input-block__error">
+              請輸入您的回答
+            </div>
+          </div>
+
+          <div class="input-block required hide-error">
+            <div class="input-block__title">
+              <label for="email">電子郵件 <span>*</span></label>
+            </div>
+            <div class="input-block__content">
+              <input id="email" type="text" placeholder="您的電子郵件" name="email">
+            </div>
+            <div class="input-block__error">
+              請輸入您的電子郵件
+            </div>   
+          </div>
+
+          <div class="input-block required hide-error">
+            <div class="input-block__title">
+              <label for="tel">手機號碼 <span>*</span></label>
+            </div>
+            <div class="input-block__content">
+              <input id="tel" type="text" placeholder="您的手機號碼" name="tel">
+            </div>
+            <div class="input-block__error">
+              請輸入您的手機號碼
+            </div>  
+          </div>
+
+          <div class="input-block">
+            <div class="input-block__title">
+              <label for="select">報名類型 <span>*</span></label>
+            </div>
+            <div class="input-block__content required hide-error">
+              <div class="radio">
+                <input type="radio" name="type" id="type1" value="1"> 躺在床上用想像力實作
+              </div>
+              <div class="radio">
+                <input type="radio" name="type" id="type2" value="2"> 趴在地上滑手機找現成的
+              </div>
+              <div class="input-block__error">
+                請選擇報名類型
+              </div>  
+            </div>
+          </div>
+
+          <div class="input-block required hide-error">
+            <div class="input-block__title">
+              <label for="how__to__know">怎麼知道這個活動的？ <span>*</span></label>
+            </div>
+            <div class="input-block__content">
+              <input id="answer" type="text" placeholder="您的回答" name="answer">
+            </div>
+            <div class="input-block__error">
+              請輸入您的回答
+            </div>  
+          </div>
+
+          <div class="input-block required hide-error">
+            <div class="input-block__title">
+              <label for="other">其他 <span>*</span></label>
+              <p class="advise">對活動的一些建議</p>
+            </div>
+            <div class="input-block require hide-error">
+              <input id="other" type="text" placeholder="您的回答" name="name">
+            </div>
+            <div class="input-block__error">
+              請輸入您的回答
+            </div>  
+          </div>
+          
+          <button type="submit">提交</button> 
+          <p>請勿透過表單送出您的密碼。</p>
+        </form>   
+      </div>
+    </div>
+  </main>
+  <footer class="footer__copyright">
+    <p>© 2020 © Copyright. All rights Reserved.</p>
+  </footer>
+</body>
+</html>
