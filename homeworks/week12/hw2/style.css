@@ -1,0 +1,28 @@
+* {
+  font-family: 'Noto Sans KR', sans-serif;
+}
+h1 {
+  letter-spacing: 1rem;
+  font-size: 60px;
+  color:  rgb(99, 124, 105);
+}
+.wrap {
+  border: black;
+  border-radius: 5px;
+  box-shadow: 3px 3px 10px rgb(0 0 0 / 20%);
+}
+input[type="text"], textarea {
+  outline: none;
+  box-shadow:none !important;
+  border:1px solid #ccc !important;
+}
+.clear-all {
+  color: black;
+}
+.btn-link {
+  text-decoration: none;
+  color:  black;
+}
+.todo {
+  display: flex;
+}
