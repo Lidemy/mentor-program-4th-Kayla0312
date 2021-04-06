@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- JQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <!-- font type -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>Message Board</title>
+  </head>
+  <body>
+    <div class="containet title my-5 text-center ">
+      <h1>Message Board</h1>
+    </div>
+    <div class="container input-content mt-5 p-4">
+      <form class="add-comment-form">
+        <div class="form-group">
+          <label for="nickname">Nickname</label>
+          <input type="text" class="form-control shadow-none" name="nickname" id="nickname">
+        </div>
+        <div class="form-group">
+          <label for="content">Contents</label>
+          <textarea class="form-control shadow-none" name="content" id="content" rows="4"></textarea>
+        </div>
+        <button type="submit" class="btn btn-info form-btn">Submit</button>
+      </form>
+    </div>
+    <div class="container comments mt-5 mb-5 p-4">
+      <div class="comment-list">
+      </div>
+    </div>
+    <script>
+      // XSS
+      function escape(toOutput){
+        return toOutput.replace(/\&/g, '&amp;')
+            .replace(/\</g, '&lt;')
+            .replace(/\>/g, '&gt;')
+            .replace(/\"/g, '&quot;')
+            .replace(/\'/g, '&#x27')
+            .replace(/\//g, '&#x2F');
+      }
+      // cursorID 用來當定位，拿到id“”以前的資料，ex:cursorID=21, Get comments before id 21
+      function getCommentsAPI(site_key, cursorID, cb){
+        let url = `http://mentor-program.co/mtr04group1/Kayla/week12/hw1/api_comments.php?site_key=${site_key}`;
+        if (cursorID) { 
+          url += `&cursor_id=${cursorID}`;
+        } 
+          $.ajax({
+            url,
+            }).done((data) => {
+              cb(data);
+            });
+      }
+
+      // 動態新增資料->HTML
+      function appendCommentToDOM(container, comment, isPrepend) {
+        const html = `
+          <div class="card mb-4">
+            <div class="card-body">
+              <h5 class="card-title">${escape(comment.nickname)}</h5>
+              <hr>
+              <p class="card-text">${escape(comment.content)}</p>
+            </div>
+          </div>
+        `;
+        if(isPrepend){
+          // 加入結尾
+          container.prepend(html);
+        } else {
+          //加入開頭
+          container.append(html)
+        }
+      }
+      
+      const site_key = `test1`;
+      const loadMoreButtonHTML = `<button type="submit" class="btn btn-info load-more-btn">Load More...</button>`;
+      let cursorID = null;
+      let isEnd = false;
+      const commentDOM = $('.comment-list');
+
+      // 印出拿到的資料
+      function getComments() {
+        const commentDOM = $('.comment-list');
+        $('.load-more-btn').hide();
+        if (isEnd) {
+          return;
+        }
+        getCommentsAPI(site_key, cursorID, data => {
+          if (!data.ok) {
+            alert(data.message);
+            return;
+          }
+          // 拿到 comments 資料（id/nickname/content/created_at）
+          const comments = data.discussions;  
+          for(let comment of comments) { 
+            appendCommentToDOM(commentDOM, comment)
+          }
+
+          const length  = comments.length;
+          if(length === 0) {
+            isEnd = true;
+            $('.load-more-btn').hide();
+          } else {
+            cursorID  = comments[length - 1].id;
+          }
+          $('.comment-list').append(loadMoreButtonHTML);
+        })
+      }
+      $(document).ready(() => {
+        const commentDOM = $('.comment-list');
+        getComments();
+        commentDOM.on('click', '.load-more-btn', () => {
+        getComments();
+      })
+
+      $('.add-comment-form').submit(e => {
+        e.preventDefault();
+        const newCommentData = {
+        site_key: 'test1',
+        nickname: $('input[name=nickname]').val(),
+        content: $('textarea[name=content]').val()
+      }
+      $.ajax({
+        type: 'POST',
+        url: 'http://mentor-program.co/mtr04group1/Kayla/week12/hw1/api_add_comments.php',
+        data: newCommentData,
+        }).done((data) => {
+          if (!data.ok) {
+            alert(data.message);
+            return;
+          }
+          // 送出後清空欄位的值
+          $('input[name=nickname]').val('');
+          $('textarea[name=content]').val('');
+          appendCommentToDOM(commentDOM, newCommentData, true);
+        });
+      });
+      })
+    </script>
+  </body>
+</html>
