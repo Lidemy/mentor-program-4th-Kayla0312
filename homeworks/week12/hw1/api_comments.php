@@ -27,7 +27,7 @@
 
   $stmt = $conn->prepare($sql);
 
-  if(empty($_GET['cursor_id'])){
+  if (empty($_GET['cursor_id'])) {
     $stmt->bind_param('s', $site_key);
   } else {
     $stmt->bind_param('si', $site_key, $_GET['cursor_id']);

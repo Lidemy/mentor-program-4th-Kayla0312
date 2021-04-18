@@ -38,21 +38,21 @@
       // XSS
       function escape(toOutput){
         return toOutput.replace(/\&/g, '&amp;')
-            .replace(/\</g, '&lt;')
-            .replace(/\>/g, '&gt;')
-            .replace(/\"/g, '&quot;')
-            .replace(/\'/g, '&#x27')
-            .replace(/\//g, '&#x2F');
+          .replace(/\</g, '&lt;')
+          .replace(/\>/g, '&gt;')
+          .replace(/\"/g, '&quot;')
+          .replace(/\'/g, '&#x27')
+          .replace(/\//g, '&#x2F');
       }
       // cursorID 用來當定位，拿到id“”以前的資料，ex:cursorID=21, Get comments before id 21
-      function getCommentsAPI(site_key, cursorID, cb){
+      function getCommentsAPI(site_key, cursorID, cb) {
         let url = `http://mentor-program.co/mtr04group1/Kayla/week12/hw1/api_comments.php?site_key=${site_key}`;
         if (cursorID) { 
           url += `&cursor_id=${cursorID}`;
         } 
           $.ajax({
             url,
-            }).done((data) => {
+          }).done((data) => {
               cb(data);
             });
       }
@@ -68,7 +68,7 @@
             </div>
           </div>
         `;
-        if(isPrepend){
+        if (isPrepend) {
           // 加入結尾
           container.prepend(html);
         } else {
@@ -97,7 +97,7 @@
           }
           // 拿到 comments 資料（id/nickname/content/created_at）
           const comments = data.discussions;  
-          for(let comment of comments) { 
+          for (let comment of comments) { 
             appendCommentToDOM(commentDOM, comment)
           }
 
@@ -111,6 +111,7 @@
           $('.comment-list').append(loadMoreButtonHTML);
         })
       }
+      
       $(document).ready(() => {
         const commentDOM = $('.comment-list');
         getComments();
@@ -118,29 +119,29 @@
         getComments();
       })
 
-      $('.add-comment-form').submit(e => {
-        e.preventDefault();
-        const newCommentData = {
-        site_key: 'test1',
-        nickname: $('input[name=nickname]').val(),
-        content: $('textarea[name=content]').val()
-      }
-      $.ajax({
-        type: 'POST',
-        url: 'http://mentor-program.co/mtr04group1/Kayla/week12/hw1/api_add_comments.php',
-        data: newCommentData,
-        }).done((data) => {
-          if (!data.ok) {
-            alert(data.message);
-            return;
+        $('.add-comment-form').submit((e) => {
+          e.preventDefault();
+          const newCommentData = {
+            site_key: 'test1',
+            nickname: $('input[name=nickname]').val(),
+            content: $('textarea[name=content]').val(),
           }
-          // 送出後清空欄位的值
-          $('input[name=nickname]').val('');
-          $('textarea[name=content]').val('');
-          appendCommentToDOM(commentDOM, newCommentData, true);
+          $.ajax({
+            type: 'POST',
+            url: 'http://mentor-program.co/mtr04group1/Kayla/week12/hw1/api_add_comments.php',
+            data: newCommentData,
+            }).done((data) => {
+              if (!data.ok) {
+                alert(data.message);
+                return;
+              }
+              // 送出後清空欄位的值
+              $('input[name=nickname]').val('');
+              $('textarea[name=content]').val('');
+              appendCommentToDOM(commentDOM, newCommentData, true);
+            });
         });
       });
-      })
     </script>
   </body>
 </html>
