@@ -18,7 +18,6 @@
   }
 
   $id = intval($_GET['id']);
-
   $sql = 
   "SELECT id, todo FROM kayla_todos WHERE id = ? ";
   $stmt = $conn->prepare($sql);
