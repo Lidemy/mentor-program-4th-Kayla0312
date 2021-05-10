@@ -1,0 +1,337 @@
+$main-color: #C4C4C4
+$black: #000000
+$light-grey: #E2E2E2
+$middle-grey: #6e6e6e
+
+*
+  box-sizing: border-box
+  font-family: 'Unna', serif
+
+a
+  color: $black
+  cursor:pointer
+  text-decoration: none
+
+h1
+  font-size: 40px
+  font-weight: bold
+
+
+/* start */
+body
+  background-color: $main-color
+
+/* header */
+.board
+  max-width: 700px
+  padding: 55px
+  margin: 30px auto
+  background-color: $main-color
+  border: solid 1px $middle-grey
+  border-radius: 6px
+  &__nickname-form
+    display: flex
+    align-items: center
+  &__header
+    max-width: 1000px
+    margin: 0 auto
+    padding: 40px
+    display: flex
+    justify-content: space-between
+    align-items: center
+  &__title
+    font-size: 30px
+    font-weight:bold
+
+  &__button
+    font-size: 20px
+    display: flex
+    justify-content: space-between
+    align-items: center
+  &__link
+    transition-duration: 0.6s
+    margin-right: 20px
+    &:hover
+      color: $middle-grey
+  &__user, &__title
+    margin: 10px 0px
+    color: $middle-grey
+
+  &__nickname, &__username, &__acount, &__password
+    margin-top: 20px
+    margin-bottom: 10px
+    font-size: 18px
+    max-width: 300px
+
+  &__submit-btn
+    padding: 5px 10px
+    margin-top: 10px
+    background-color: $main-color
+    color: $black
+    font-size: 16px
+    border: 1px solid $black
+    border-radius: 5px
+    cursor:pointer
+    outline: none
+    transition-duration: 0.4s
+
+  &__submit-btn:hover
+    background-color: $black
+    color: $main-color
+    transform:scale(1.2, 1.2)
+
+  /*register*/
+  &__register-form
+    display: flex
+    align-items: center
+    flex-direction: column
+    margin: 50px auto
+    padding: 30px 40px
+    max-width: 400px
+    background-color: $main-color
+    border: solid 1px #979494
+    border-radius: 6px
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25)
+
+i
+  font-size: 16px
+  margin-right: 10px
+  text-align: center
+
+.error
+  color: red
+  font-size: 16px
+  font-family: "微軟正黑體"
+  margin-top: 10px
+
+input
+  &[type="text"], &[type="password"]
+    width: 100%
+    outline: none
+    resize: none
+    overflow: hidden
+    padding: 5px
+    box-sizing: border-box
+    margin-bottom: 10px
+    border: none
+    border-bottom: 1px solid $black
+    background: $main-color
+  &::placeholder
+    color: $middle-grey
+    font-size: 16px
+
+  &:focus
+    outline : 0
+
+textarea
+  outline: none
+  border: none
+  resize: none
+  width: 100%
+  overflow: hidden
+  background:  $light-grey
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25)
+  border-radius: 5px
+  padding: 15px
+  margin: 10px 0px
+  &:focus
+    outline : 0
+
+::placeholder
+  font-size: 16px
+
+.hide
+  display: none
+
+.message__board
+  margin-top: 50px
+  padding: 30px
+  background-color: $light-grey
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25)
+  border-radius: 5px
+
+.card
+  display: flex
+  align-items: center
+  padding: 15px
+
+  &__avatar
+    min-width: 70px
+    height: 70px
+    border-radius: 50%
+    background-color: $middle-grey
+    margin-right: 30px
+
+  &__info
+    margin-bottom: 10px
+
+  &__author
+    font-size: 25px
+    font-weight: bold
+    margin-right: 15px
+
+  &__time
+    color: #979797
+    margin-right: 10px
+
+  &__content
+    max-width: 100%
+    word-break: break-all
+    white-space: pre-line
+    font-family: '微軟正黑'
+    margin-top: 10px
+
+.signup
+  &-title
+    margin-bottom: 20px
+
+  &_link
+    margin-bottom: 10px
+
+  &__submit-btn 
+    width: 100%
+    padding: 5px 10px
+    margin-top: 10px
+    background-color: $main-color
+    color: $black
+    font-size: 16px
+    border: 1px solid $black
+    border-radius: 5px
+    cursor:pointer
+    outline: none
+    transition-duration: 0.4s
+
+  &__submit-btn:hover
+    background-color: $black
+    color: $main-color
+    transform:scale(1.1, 1.1)
+
+.notice
+  font-size: 16px
+  font-family: "微軟正黑體"
+  text-align: center
+  line-height: 24px
+  margin-bottom: 48px
+
+.page
+  &__info
+    display: flex
+    justify-content: space-between
+    margin-top: 10px
+    color: $middle-grey
+  &__display
+    margin-top: 30px
+    display: flex
+    justify-content: center
+  &__link
+    padding: 4px
+    display: flex
+    align-items: center
+    &:nth-child(-n+3)
+      margin-right: 30px
+    &:hover
+      color: $middle-grey
+    & > i
+      font-size: 10px
+      font-weight: normal
+
+.fa-chevron-right, .fa-arrow-to-right
+  margin-left: 10px
+  margin-right: 10px
+
+/* 管理頁面 table */
+.backstage__table
+  width: 100%
+tr
+  text-align: center
+td, th
+  padding: 5px
+  overflow: hidden
+  white-space: nowrap
+  font-size: 14px
+td
+  border: 1px solid $black
+  &a
+    margin-right: 10px
+    &:hover
+      color: $middle-grey
+
+
+@media (max-width:768px)
+  h1
+    font-size: 80px
+  
+  .board
+    &__title span::after
+      width: 80%
+      left: 27%
+      top: 50%
+  
+  .card__time
+    white-space:nowrap
+  
+  .header
+    &__button
+      flex-wrap: wrap
+    &__link:first-child
+      margin-right: 15px
+  
+  .page
+    &__display
+      justify-content: space-between
+  
+    &__link:nth-child(-n+3)
+      margin-right: 5px
+  
+
+@media (max-width:375px)
+  body
+    margin: 20px
+  
+  .board
+    padding: 20px
+    &__header
+      padding: 10px
+      white-space:nowrap
+    &__title span::after
+      width: 65%
+      left: 50%
+    &__submit-btn
+      padding: 5px
+      font-size: 16px
+  
+  h1
+    font-size: 40px
+
+  .header
+    &__button
+      padding: 5px
+      font-size: 16px
+      display: flex
+      flex-wrap: wrap
+      align-items: center
+      justify-content: flex-end
+  
+    &__link:first-child
+      margin-right: 0px
+      margin-bottom: 5px
+  
+  .message__board
+    margin-top: 30px
+    padding: 20px
+  
+  .card
+    padding: 5px  
+    &__avatar
+      min-width: 50px
+      height: 50px
+      margin-right: 10px    
+    &__author
+      font-size: 20px
+      font-weight: bold
+      margin-right: 15px
+    &__content
+      font-size: 14px
+      line-height: 1.2rem
+  
+
