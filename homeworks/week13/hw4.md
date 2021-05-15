@@ -10,8 +10,9 @@
   * 定位：Task manger（流程管理)
   * task 可以自定義成任何東西，Gulp 只是用來管理這些 Task。  
   * 本身做不到 Bundle。但可透過 Webpack Plugin 去做到。  
-  * 配置不同的 Task，自定義執行順序，管理整個流程。
-**Webpack -**
+  * 配置不同的 Task，自定義執行順序，管理整個流程。  
+
+**Webpack -**  
   * 定位：將資源 Bundle 一起。  
   * 某些 Task Webpack 並無法做到。例如 Call API。   
   * 透過 Loader、Plugin 統整各種資源的轉換，按照依賴和規則打包成符合生產環境部署的前端資源。
