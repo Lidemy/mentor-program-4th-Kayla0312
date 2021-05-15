@@ -20,5 +20,5 @@
 1. !important
 2. inline style
 3. Id
-4. Class / Psuedo-Class 偽類 / Attribute 屬性選擇器）
+4. Class / Psuedo-Class 偽類 / Attribute 屬性選擇器
 5. Element
