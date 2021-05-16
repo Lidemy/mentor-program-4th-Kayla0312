@@ -10,7 +10,8 @@ import { appendStyle, appendCommentToDOM } from './utils';
 import { cssTemplate, getLoadMoreButton, getFrom } from './templates';
 
 // 初始化
-export default function init(options) {
+// eslint-disable-next-line import/prefer-default-export
+export function init(options) {
   let siteKey = '';
   let apiUrl = '';
   let containerElement = null;
@@ -27,16 +28,16 @@ export default function init(options) {
   apiUrl = options.apiUrl;
   containerElement = $(options.containerSelector);
   loadMoreClassName = `${siteKey}-load-more-btn`;
-  commentsClassName = `.${siteKey}-comment-list`;
-  commentsSelector = '.' + commentsClassName;
+  commentsClassName = `${siteKey}-comment-list`;
+  commentsSelector = `.${commentsClassName}`;
   formClassName = `${siteKey}-add-comment-form`;
-  formSelector = '.' + formClassName;
+  formSelector = `.${formClassName}`;
   containerElement.append(getFrom(formClassName, commentsClassName));
 
   $(formSelector).submit((e) => {
     e.preventDefault();
-    const nicknameDOM = `${formSelector} input[name=nickname]`;
-    const contentDOM = `${formSelector} textarea[name=content]`;
+    const nicknameDOM = $(`${formSelector} input[name=nickname]`);
+    const contentDOM = $(`${formSelector} textarea[name=content]`);
     const newCommentData = {
       site_key: siteKey,
       nickname: nicknameDOM.val(),
@@ -57,7 +58,7 @@ export default function init(options) {
   function getNewComments() {
     // eslint-disable-next-line no-shadow
     const commentDOM = $(commentsSelector);
-    $('.' + loadMoreClassName).hide();
+    $(`.${loadMoreClassName}`).hide();
     if (isEnd) {
       return;
     }
@@ -76,7 +77,7 @@ export default function init(options) {
       const length = comments.length;
       if (length === 0) {
         isEnd = true;
-        $('.' + loadMoreClassName).hide();
+        $(`.${loadMoreClassName}`).hide();
       } else {
         cursorID = comments[length - 1].id;
         const loadMoreButtonHTML = getLoadMoreButton(loadMoreClassName);
@@ -87,7 +88,7 @@ export default function init(options) {
   appendStyle(cssTemplate);
   commentDOM = $(commentsSelector);
   getNewComments();
-  commentDOM.on('click', '.' + loadMoreClassName, () => {
+  commentDOM.on('click', `.${loadMoreClassName}`, () => {
     getNewComments();
   });
 }
